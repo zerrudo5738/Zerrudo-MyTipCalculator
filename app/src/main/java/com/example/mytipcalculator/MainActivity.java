@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.io.*;
+import java.util.*;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -20,25 +22,33 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void calculate(View v){
-        // get references to all elements on app screen
-        EditText num1EditText = (EditText) findViewById(R.id.num1EditText);
-        EditText num2EditText = (EditText) findViewById(R.id.num2EditText);
-        TextView ansTextView = (TextView) findViewById(R.id.ansTextView);
-        TextView tipTextView = (TextView) findViewById(R.id.tipTextView);
+        try{
+            // get references to all elements on app screen
+            EditText num1EditText = (EditText) findViewById(R.id.num1EditText);
+            EditText num2EditText = (EditText) findViewById(R.id.num2EditText);
+            TextView ansTextView = (TextView) findViewById(R.id.ansTextView);
+            TextView tipTextView = (TextView) findViewById(R.id.tipTextView);
 
-        NumberFormat formatter = new DecimalFormat("##.00");
+            NumberFormat formatter = new DecimalFormat("#0.00");
 
-        // get the values from the EditText boxes and convert them to int data types
-        double num1 = Integer.parseInt(num1EditText.getText().toString());
-        int num2 = Integer.parseInt(num2EditText.getText().toString());
+            // get the values from the EditText boxes and convert them to int data types
+            double num1 = Integer.parseInt(num1EditText.getText().toString());
+            int num2 = Integer.parseInt(num2EditText.getText().toString());
+            if(num1 >0 && num2 >=0) {
+                // calculate total through two ints
+                double tip = (num2 * .01) * num1;
+                double cost = tip + num1;
 
-        // calculate total through two ints
-        double tip = (num2*.01) * num1;
-        double cost = tip + num1;
-
-
-        tipTextView.setText("Tip: $" + formatter.format(tip));
-        ansTextView.setText("Final Cost: $" + formatter.format(cost));
+                tipTextView.setText("Tip: $" + formatter.format(tip));
+                ansTextView.setText("Final Cost: $" + formatter.format(cost));
+            }
+            else{
+                System.out.println("Enter a positive number");
+            }
+        }
+        catch (Exception e){
+            System.out.println("Enter a number");
+        }
     }
 
 }

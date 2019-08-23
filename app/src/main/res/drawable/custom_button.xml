@@ -3,6 +3,6 @@
 
     <solid android:color="@color/colorPrimary"></solid>
     <corners android:radius="50sp"></corners>
-    <gradient android:startColorf4="@color/colorPrimary" android:endColor="@color/colorPrimaryDark"></gradient>
+    <gradient android:startColor="@color/colorPrimary" android:endColor="@color/colorText"></gradient>
 
 </shape>
