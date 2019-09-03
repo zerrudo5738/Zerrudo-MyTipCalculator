@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
-
     public void calculate(View v){
         try{
             // get references to all elements on app screen
